@@ -1,8 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Icon } from "../Icon";
-import { InfoLine } from "../ui/Stats";
 import {
-  mockUsername,
   navByRole,
   pageTitles,
   profileName,
@@ -131,32 +129,30 @@ export function WorkspaceLayout({
                   </button>
 
                   {isProfileOpen ? (
-                    <div className="dropdown-enter absolute right-0 z-30 mt-2 w-72 rounded-lg border border-[#d8e0ed] bg-white p-4 shadow-2xl shadow-[#0b1b33]/15">
-                      <div className="flex items-center gap-3 border-b border-[#e6edf7] pb-4">
-                        <img
-                          src="/profile.png"
-                          alt={`${profileName} profile`}
-                          className="h-14 w-14 rounded-full border border-[#d8e0ed] object-cover"
-                        />
-                        <div className="min-w-0">
-                          <p className="truncate font-bold text-[#142033]">
-                            {profileName}
-                          </p>
-                          <p className="mt-1 text-sm font-semibold text-[#0b4bb3]">
-                            {roleDetails[role].label}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="mt-4 space-y-3 text-sm">
-                        <InfoLine label="Username" value={mockUsername} />
-                      </div>
+                    <div className="dropdown-enter absolute right-0 z-30 mt-2 w-56 rounded-lg border border-[#d8e0ed] bg-white p-2 shadow-2xl shadow-[#0b1b33]/15">
+                      <button
+                        type="button"
+                        onClick={() => setIsProfileOpen(false)}
+                        className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-semibold text-[#344054] transition hover:bg-[#eef4ff] hover:text-[#0b4bb3]"
+                      >
+                        <Icon name="profile" className="h-4 w-4" />
+                        My Profile
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setIsProfileOpen(false)}
+                        className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-semibold text-[#344054] transition hover:bg-[#eef4ff] hover:text-[#0b4bb3]"
+                      >
+                        <Icon name="settings" className="h-4 w-4" />
+                        Settings
+                      </button>
                       <button
                         type="button"
                         onClick={onSwitchRole}
-                        className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-[#d8e0ed] px-3 py-2.5 text-sm font-semibold text-[#344054] transition hover:border-[#0b4bb3] hover:text-[#0b4bb3]"
+                        className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-semibold text-[#d8182f] transition hover:bg-[#fff1f2]"
                       >
                         <Icon name="logout" className="h-4 w-4" />
-                        Switch role
+                        Logout
                       </button>
                     </div>
                   ) : null}
