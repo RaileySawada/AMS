@@ -5,10 +5,7 @@ import { SubmissionTable } from "../components/SubmissionTable";
 import { DocumentBadge } from "../components/ui/Badges";
 import { Panel } from "../components/ui/Panel";
 import { InfoLine } from "../components/ui/Stats";
-import {
-  requiredDocuments,
-  submissions,
-} from "../data/mockData";
+import { requiredDocuments, submissions } from "../data/mockData";
 import { getDocumentState } from "../utils/documentState";
 
 export function ClerkUploadPage() {
@@ -35,7 +32,7 @@ export function ClerkUploadPage() {
   );
 
   return (
-    <div className="page-enter grid gap-6">
+    <div className="page-enter grid gap-4 sm:gap-6">
       <section className="grid gap-4 xl:grid-cols-[360px_1fr]">
         <Panel title="School Selection" eyebrow="Upload source">
           <label className="block">
@@ -55,7 +52,7 @@ export function ClerkUploadPage() {
             </select>
           </label>
 
-          <div className="mt-5 grid gap-3">
+          <div className="mt-5 grid gap-3 min-[520px]:grid-cols-2 xl:grid-cols-1">
             <InfoLine label="Tracking ID" value={selectedSubmission.id} />
             <InfoLine label="District" value={selectedSubmission.district} />
             <InfoLine label="Purchase type" value={selectedSubmission.type} />
@@ -65,7 +62,7 @@ export function ClerkUploadPage() {
 
         <Panel title="Documents" eyebrow="Goods purchase">
           <div className="grid gap-4 lg:grid-cols-[1fr_260px]">
-            <div className="rounded-lg border-2 border-dashed border-[#aebbd0] bg-[#f8fafc] p-6">
+            <div className="rounded-lg border-2 border-dashed border-[#aebbd0] bg-[#f8fafc] p-4 sm:p-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <div className="grid h-12 w-12 place-items-center rounded-lg bg-[#eef4ff] text-[#0b4bb3]">
@@ -80,7 +77,7 @@ export function ClerkUploadPage() {
                 </div>
                 <button
                   type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg bg-[#0b4bb3] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#083d94]"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#0b4bb3] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#083d94] sm:w-auto"
                 >
                   <Icon name="file" className="h-5 w-5" />
                   Choose files
@@ -117,8 +114,36 @@ export function ClerkUploadPage() {
 
       <section className="grid gap-6 xl:grid-cols-[1fr_380px]">
         <Panel title="Attachments" eyebrow="Checklist">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[720px] text-left text-sm">
+          <div className="grid gap-3 xl:hidden">
+            {documentRows.map((row, index) => (
+              <article
+                key={row.document}
+                className="rounded-lg border border-[#d8e0ed] p-4"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold text-[#667085]">
+                      Document {index + 1}
+                    </p>
+                    <h3 className="mt-1 break-words font-bold text-[#142033]">
+                      {row.document}
+                    </h3>
+                    <p className="mt-1 text-sm text-[#667085]">{row.owner}</p>
+                  </div>
+                  <DocumentBadge state={row.state} />
+                </div>
+                <button
+                  type="button"
+                  className="mt-4 w-full rounded-lg border border-[#d8e0ed] px-3 py-2 text-xs font-semibold text-[#344054] hover:border-[#0b4bb3] hover:text-[#0b4bb3]"
+                >
+                  Replace
+                </button>
+              </article>
+            ))}
+          </div>
+
+          <div className="hidden xl:block">
+            <table className="w-full table-auto text-left text-sm">
               <thead>
                 <tr className="border-b border-[#d8e0ed] text-xs uppercase text-[#667085]">
                   <th className="py-3 pr-4">No.</th>

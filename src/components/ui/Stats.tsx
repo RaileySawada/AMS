@@ -17,14 +17,16 @@ export function StatCard({
   }[tone];
 
   return (
-    <section className="page-enter rounded-lg border border-[#d8e0ed] bg-white p-5 shadow-sm shadow-[#0b1b33]/5">
+    <section className="page-enter min-w-0 rounded-lg border border-[#d8e0ed] bg-white p-4 shadow-sm shadow-[#0b1b33]/5 sm:p-5">
       <div
         className={`mb-4 grid h-10 w-10 place-items-center rounded-lg ${toneClass}`}
       >
         <Icon name="analytics" className="h-5 w-5" />
       </div>
       <p className="text-sm font-semibold text-[#667085]">{label}</p>
-      <p className="mt-2 text-3xl font-bold text-[#142033]">{value}</p>
+      <p className="mt-2 text-2xl font-bold text-[#142033] sm:text-3xl">
+        {value}
+      </p>
     </section>
   );
 }
@@ -32,7 +34,7 @@ export function StatCard({
 export function MetricPill({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg border border-white/15 bg-white/5 p-3">
-      <p className="text-2xl font-bold text-white">{value}</p>
+      <p className="text-xl font-bold text-white sm:text-2xl">{value}</p>
       <p className="mt-1">{label}</p>
     </div>
   );
@@ -40,9 +42,9 @@ export function MetricPill({ label, value }: { label: string; value: string }) {
 
 export function InfoLine({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-start justify-between gap-4 text-sm">
+    <div className="flex items-start justify-between gap-3 text-sm">
       <span className="text-[#667085]">{label}</span>
-      <span className="max-w-[60%] text-right font-semibold text-[#142033]">
+      <span className="max-w-[65%] break-words text-right font-semibold text-[#142033]">
         {value}
       </span>
     </div>

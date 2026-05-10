@@ -10,7 +10,7 @@ export function AnalyticsPage() {
   ];
 
   return (
-    <div className="page-enter grid gap-6">
+    <div className="page-enter grid gap-4 sm:gap-6">
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Total submissions" value="96" tone="blue" />
         <StatCard label="Complete packages" value="68" tone="green" />
@@ -18,7 +18,7 @@ export function AnalyticsPage() {
         <StatCard label="Duplicate alerts" value="7" tone="red" />
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[1fr_420px]">
+      <section className="grid gap-4 sm:gap-6 xl:grid-cols-[1fr_420px]">
         <Panel title="Completion by District" eyebrow="Analytics">
           <div className="space-y-5">
             {completionByDistrict.map((metric) => (
@@ -52,7 +52,7 @@ export function AnalyticsPage() {
       </section>
 
       <Panel title="Volume" eyebrow="Monthly">
-        <div className="grid h-64 grid-cols-6 items-end gap-3">
+        <div className="grid h-56 grid-cols-6 items-end gap-2 sm:h-64 sm:gap-3">
           {[42, 58, 75, 61, 84, 96].map((value, index) => (
             <div key={value} className="flex h-full flex-col justify-end gap-2">
               <div

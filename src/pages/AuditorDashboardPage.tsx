@@ -9,7 +9,7 @@ export function AuditorDashboardPage() {
   );
 
   return (
-    <div className="page-enter grid gap-6">
+    <div className="page-enter grid gap-4 sm:gap-6">
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Pending review" value="18" tone="blue" />
         <StatCard label="Returned packages" value="5" tone="red" />
@@ -17,7 +17,7 @@ export function AuditorDashboardPage() {
         <StatCard label="Average completion" value="88%" tone="gold" />
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[1fr_380px]">
+      <section className="grid gap-4 sm:gap-6 xl:grid-cols-[1fr_380px]">
         <Panel title="Tasks" eyebrow="Audit queue">
           <div className="space-y-3">
             {pending.map((submission) => (

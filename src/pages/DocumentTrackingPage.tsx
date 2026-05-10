@@ -34,7 +34,7 @@ export function DocumentTrackingPage({ role }: { role: Role }) {
         ];
 
   return (
-    <div className="page-enter grid gap-6">
+    <div className="page-enter grid gap-4 sm:gap-6">
       <section className="grid gap-4 md:grid-cols-3">
         <StatCard label="Submitted" value="31" tone="blue" />
         <StatCard label="Under review" value="12" tone="gold" />
@@ -46,7 +46,7 @@ export function DocumentTrackingPage({ role }: { role: Role }) {
         eyebrow="Tracking"
       >
         <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <div className="relative max-w-md flex-1">
+          <div className="relative w-full md:max-w-md md:flex-1">
             <Icon
               name="search"
               className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#667085]"
@@ -58,15 +58,71 @@ export function DocumentTrackingPage({ role }: { role: Role }) {
           </div>
           <button
             type="button"
-            className="flex items-center justify-center gap-2 rounded-lg border border-[#d8e0ed] px-4 py-2.5 text-sm font-semibold text-[#344054] hover:border-[#0b4bb3] hover:text-[#0b4bb3]"
+            className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#d8e0ed] px-4 py-2.5 text-sm font-semibold text-[#344054] hover:border-[#0b4bb3] hover:text-[#0b4bb3] md:w-auto"
           >
             <Icon name="filter" className="h-4 w-4" />
             Filter
           </button>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[940px] text-left text-sm">
+        <div className="grid gap-3 xl:hidden">
+          {submissions.map((submission) => (
+            <article
+              key={submission.id}
+              className="rounded-lg border border-[#d8e0ed] p-4"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-semibold text-[#0b4bb3]">{submission.id}</p>
+                  <h3 className="mt-1 break-words font-bold">{submission.school}</h3>
+                  <p className="mt-1 text-xs text-[#667085]">
+                    {submission.clerk} - {submission.amount}
+                  </p>
+                </div>
+                <StatusBadge status={submission.status} />
+              </div>
+              <div className="mt-4">
+                <div className="mb-2 flex items-center justify-between text-sm">
+                  <span className="font-semibold text-[#344054]">
+                    Completeness
+                  </span>
+                  <span className="font-bold">{submission.completeness}%</span>
+                </div>
+                <div className="h-2 rounded-full bg-[#e6edf7]">
+                  <div
+                    className="h-2 rounded-full bg-[#0b4bb3]"
+                    style={{ width: `${submission.completeness}%` }}
+                  />
+                </div>
+              </div>
+              <select
+                value={rowStatus[submission.id]}
+                onChange={(event) =>
+                  setRowStatus((current) => ({
+                    ...current,
+                    [submission.id]: event.target.value,
+                  }))
+                }
+                className="mt-4 w-full rounded-lg border border-[#c9d4e5] bg-white px-3 py-2 text-sm outline-none focus:border-[#0b4bb3]"
+              >
+                {statusOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="button"
+                className="mt-3 w-full rounded-lg bg-[#0b4bb3] px-3 py-2 text-xs font-semibold text-white hover:bg-[#083d94]"
+              >
+                Update
+              </button>
+            </article>
+          ))}
+        </div>
+
+        <div className="hidden xl:block">
+          <table className="w-full table-auto text-left text-sm">
             <thead>
               <tr className="border-b border-[#d8e0ed] text-xs uppercase text-[#667085]">
                 <th className="py-3 pr-4">Tracking ID</th>

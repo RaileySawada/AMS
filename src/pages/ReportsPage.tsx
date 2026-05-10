@@ -17,7 +17,7 @@ export function ReportsPage({ role }: { role: Role }) {
         ];
 
   return (
-    <div className="page-enter grid gap-6 xl:grid-cols-[1fr_380px]">
+    <div className="page-enter grid gap-4 sm:gap-6 xl:grid-cols-[1fr_380px]">
       <Panel title="Reports" eyebrow="Library">
         <div className="grid gap-4 md:grid-cols-2">
           {reportTypes.map((report, index) => (
@@ -62,7 +62,7 @@ export function ReportsPage({ role }: { role: Role }) {
             ))}
           </select>
         </label>
-        <div className="mt-4 grid grid-cols-2 gap-3">
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <label className="block">
             <span className="text-sm font-semibold text-[#344054]">From</span>
             <input

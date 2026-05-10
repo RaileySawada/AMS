@@ -11,7 +11,7 @@ export function StatusBadge({ status }: { status: SubmissionStatus }) {
 
   return (
     <span
-      className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ${classes[status]}`}
+      className={`inline-flex whitespace-nowrap rounded-full px-3 py-1 text-xs font-bold ${classes[status]}`}
     >
       {status}
     </span>
@@ -28,7 +28,7 @@ export function DocumentBadge({ state }: { state: DocumentState }) {
 
   return (
     <span
-      className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ${classes[state]}`}
+      className={`inline-flex whitespace-nowrap rounded-full px-3 py-1 text-xs font-bold ${classes[state]}`}
     >
       {state}
     </span>

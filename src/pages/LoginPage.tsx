@@ -37,8 +37,8 @@ export function LoginPage({
 
   return (
     <main className="min-h-screen bg-white text-[#142033]">
-      <div className="grid min-h-screen lg:grid-cols-[1.1fr_0.9fr]">
-        <section className="relative flex flex-col justify-between overflow-hidden bg-[#0b1b33] px-6 py-8 text-white sm:px-10 lg:px-14">
+      <div className="grid min-h-screen xl:grid-cols-[1.1fr_0.9fr]">
+        <section className="relative flex min-h-[620px] flex-col justify-between bg-[#0b1b33] px-4 py-6 text-white sm:min-h-[680px] sm:px-8 sm:py-8 xl:min-h-screen xl:px-14">
           <div className="absolute inset-x-0 top-0 h-1.5 bg-[#d8182f]" />
           <div className="absolute inset-x-0 bottom-0 h-1.5 bg-[#f3c848]" />
 
@@ -46,27 +46,27 @@ export function LoginPage({
             <img
               src="/logo.png"
               alt="Commission on Audit logo"
-              className="h-16 w-16 rounded-lg bg-white object-contain p-1 shadow-lg shadow-black/20"
+              className="h-14 w-14 rounded-lg bg-white object-contain p-1 shadow-lg shadow-black/20 sm:h-16 sm:w-16"
             />
             <div>
               <p className="text-xs font-semibold uppercase text-[#f3c848]">
                 Commission on Audit
               </p>
-              <h1 className="mt-1 text-2xl font-bold leading-tight sm:text-3xl">
+              <h1 className="mt-1 text-xl font-bold leading-tight sm:text-3xl">
                 Audit Management System
               </h1>
             </div>
           </div>
 
-          <div className="relative my-12 max-w-3xl">
-            <h2 className="max-w-2xl text-4xl font-bold leading-tight sm:text-5xl">
+          <div className="relative my-8 max-w-3xl sm:my-12">
+            <h2 className="max-w-2xl text-3xl font-bold leading-tight sm:text-5xl">
               School purchase audit workflow
             </h2>
-            <div className="mt-8 grid gap-2 sm:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-2 sm:mt-8 sm:grid-cols-4">
               {["Upload", "Validate", "Review", "Complete"].map((stage) => (
                 <div
                   key={stage}
-                  className="rounded-lg border border-white/15 bg-white/5 p-3"
+                  className="rounded-lg border border-white/15 bg-white/5 p-3 text-center sm:text-left"
                 >
                   <span className="text-sm font-semibold text-white">
                     {stage}
@@ -75,7 +75,7 @@ export function LoginPage({
               ))}
             </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2">
               {roleOptions.map((role) => (
                 <button
                   key={role}
@@ -116,19 +116,19 @@ export function LoginPage({
           </div>
         </section>
 
-        <section className="min-h-screen border-l border-[#d8e0ed] bg-[#fbfcfe] px-6 py-6 sm:px-8 lg:px-10">
-          <div className="flex min-h-[calc(100vh-3rem)] flex-col justify-between">
+        <section className="border-t border-[#d8e0ed] bg-[#fbfcfe] px-4 py-6 sm:px-8 xl:min-h-screen xl:border-l xl:border-t-0 xl:px-10">
+          <div className="flex flex-col gap-8 xl:min-h-[calc(100vh-3rem)] xl:justify-between">
             <form onSubmit={handleSubmit} className="w-full">
               <div className="flex items-center justify-between gap-4 border-b border-[#d8e0ed] pb-5">
                 <div className="flex items-center gap-4">
-                  <div className="grid h-14 w-14 place-items-center rounded-lg bg-[#eef4ff] text-[#0b4bb3]">
+                  <div className="grid h-12 w-12 place-items-center rounded-lg bg-[#eef4ff] text-[#0b4bb3] sm:h-14 sm:w-14">
                     <Icon name="lock" className="h-6 w-6" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-[#d8182f]">
                       {roleDetails[selectedRole].label}
                     </p>
-                    <h2 className="text-3xl font-bold text-[#142033]">
+                    <h2 className="text-2xl font-bold text-[#142033] sm:text-3xl">
                       Sign in
                     </h2>
                   </div>
@@ -198,8 +198,8 @@ export function LoginPage({
               </button>
             </form>
 
-            <div className="mt-8 border-t border-[#d8e0ed] pt-5">
-              <div className="grid gap-3 sm:grid-cols-2">
+            <div className="border-t border-[#d8e0ed] pt-5">
+              <div className="grid gap-3 min-[420px]:grid-cols-2">
                 {navByRole[selectedRole].map((item) => (
                   <div
                     key={item.id}
