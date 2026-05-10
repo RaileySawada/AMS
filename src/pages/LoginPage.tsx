@@ -38,7 +38,7 @@ export function LoginPage({
   return (
     <main className="min-h-screen bg-white text-[#142033]">
       <div className="grid min-h-screen xl:grid-cols-[1.1fr_0.9fr]">
-        <section className="relative flex min-h-[620px] flex-col justify-between bg-[#0b1b33] px-4 py-6 text-white sm:min-h-[680px] sm:px-8 sm:py-8 xl:min-h-screen xl:px-14">
+        <section className="relative flex min-h-155 flex-col justify-between bg-[#0b1b33] px-4 py-6 text-white sm:min-h-170 sm:px-8 sm:py-8 xl:min-h-screen xl:px-14">
           <div className="absolute inset-x-0 top-0 h-1.5 bg-[#d8182f]" />
           <div className="absolute inset-x-0 bottom-0 h-1.5 bg-[#f3c848]" />
 
